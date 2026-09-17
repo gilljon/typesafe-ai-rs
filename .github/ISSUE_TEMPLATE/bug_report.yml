@@ -1,0 +1,29 @@
+name: Bug report
+description: Report unexpected SDK behavior with a minimal reproduction.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Remove API keys, authorization headers, and private data before submitting.
+        Report vulnerabilities through the Security tab instead of a public issue.
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Crate version, Rust version, OS, and enabled Cargo features.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Code or steps that demonstrate the issue, with credentials removed.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+      description: Include the error or HTTP status, and what you expected instead.
+    validations:
+      required: true
