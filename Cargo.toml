@@ -1,0 +1,43 @@
+[package]
+name = "typesafe-ai-rs"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+description = "Async and blocking Rust clients for the TypeSafe AI System One API"
+license = "MIT"
+repository = "https://github.com/gilljon/typesafe-ai-rs"
+homepage = "https://github.com/gilljon/typesafe-ai-rs"
+documentation = "https://docs.rs/typesafe-ai-rs"
+readme = "README.md"
+keywords = ["typesafe", "ai", "sdk", "classification", "api"]
+categories = ["api-bindings", "asynchronous"]
+include = ["src/**", "examples/**", "tests/**", "Cargo.toml", "Cargo.lock", "README.md", "LICENSE", "CHANGELOG.md", "docs/**"]
+
+[features]
+default = ["rustls-tls"]
+rustls-tls = ["reqwest/rustls-tls"]
+native-tls = ["reqwest/native-tls"]
+blocking = ["reqwest/blocking"]
+
+[dependencies]
+bytes = "1"
+fastrand = "2"
+httpdate = "1"
+log = "0.4"
+reqwest = { version = "0.12", default-features = false, features = ["json"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["time", "macros"] }
+tokio-util = { version = "0.7", features = ["rt"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "io-util", "test-util"] }
+wiremock = "0.6"
+env_logger = "0.11"
+
+[[example]]
+name = "blocking"
+required-features = ["blocking"]
+
+[package.metadata.docs.rs]
+all-features = true
